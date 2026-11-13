@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Point Casks/database-viewer.rb at a published arm64 DMG.
-# Usage: bash scripts/bump-cask.sh [--print-only] 0.1.3
+# Point Casks/moledb.rb at a published arm64 DMG.
+# Usage: bash scripts/bump-cask.sh [--print-only] 0.1.8
 set -euo pipefail
 
 print_only=0
@@ -14,7 +14,7 @@ while [[ $# -gt 0 ]]; do
       ;;
     -h|--help)
       echo "Usage: bash scripts/bump-cask.sh [--print-only] <version>"
-      echo "Example: bash scripts/bump-cask.sh 0.1.3"
+      echo "Example: bash scripts/bump-cask.sh 0.1.8"
       exit 0
       ;;
     *)
@@ -35,13 +35,13 @@ fi
 
 version="${version#v}"
 if [[ ! "$version" =~ ^[0-9]+\.[0-9]+\.[0-9]+([.-][0-9A-Za-z]+)*$ ]]; then
-  echo "version must look like 0.1.3 (got: ${version})" >&2
+  echo "version must look like 0.1.8 (got: ${version})" >&2
   exit 2
 fi
 
 owner="MarkKiepe"
 repo="database-viewer"
-asset="Database-Viewer-${version}-arm64.dmg"
+asset="MoleDB-${version}-arm64.dmg"
 case "$asset" in
   *.pkg|*Installer*)
     echo "refusing to use a package installer: ${asset}" >&2
@@ -52,14 +52,14 @@ esac
 api="https://api.github.com/repos/${owner}/${repo}/releases/tags/v${version}"
 url="https://github.com/${owner}/${repo}/releases/download/v${version}/${asset}"
 root="$(cd "$(dirname "$0")/.." && pwd)"
-cask="${root}/Casks/database-viewer.rb"
+cask="${root}/Casks/moledb.rb"
 
 echo "Looking up ${asset}"
 
 if ! meta="$(curl -fsSL \
   -H "Accept: application/vnd.github+json" \
   -H "X-GitHub-Api-Version: 2022-11-28" \
-  -H "User-Agent: database-viewer-homebrew-tap" \
+  -H "User-Agent: moledb-homebrew-tap" \
   "$api")"; then
   echo "could not read release v${version} on ${owner}/${repo}" >&2
   exit 1
@@ -135,8 +135,8 @@ new, sha_hits = re.subn(
 )
 if sha_hits != 1:
     sys.exit("could not update the sha256 stanza")
-if "releases/download/" not in new or "-arm64.dmg" not in new:
-    sys.exit("cask url is not the Releases arm64 DMG")
+if "releases/download/" not in new or "MoleDB-" not in new or "-arm64.dmg" not in new:
+    sys.exit("cask url is not the Releases arm64 MoleDB DMG")
 if ".pkg" in new:
     sys.exit("cask must not reference a package installer")
 if new == text:

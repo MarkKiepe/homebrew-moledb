@@ -1,11 +1,11 @@
-cask "database-viewer" do
-  version "0.1.5"
-  sha256 "55b29c5771ed8e6ccc8905bc147647032695cce6973588e70472d94fc61839d8"
+cask "moledb" do
+  version "0.1.7"
+  sha256 "a188662ff5442aa5380291f2950ab7e632f5158f6ed841bc21d4f773b1f60731"
 
-  url "https://github.com/MarkKiepe/database-viewer/releases/download/v#{version}/Database-Viewer-#{version}-arm64.dmg"
-  name "Database Viewer"
+  url "https://github.com/MarkKiepe/database-viewer/releases/download/v#{version}/MoleDB-#{version}-arm64.dmg"
+  name "MoleDB"
   desc "Local-first desktop SQL client"
-  homepage "https://database-viewer-website.markkiepe-ai.workers.dev/"
+  homepage "https://moledb.com/"
 
   livecheck do
     url :url
@@ -16,15 +16,19 @@ cask "database-viewer" do
   depends_on macos: ">= :ventura"
   depends_on arch: :arm64
 
-  app "Database Viewer.app"
+  app "MoleDB.app"
 
   zap trash: [
     "~/Library/Application Support/Database Viewer",
+    "~/Library/Application Support/MoleDB",
     "~/Library/Application Support/database-viewer",
     "~/Library/Application Support/databae-viewer",
     "~/Library/Caches/Database Viewer",
+    "~/Library/Caches/MoleDB",
     "~/Library/Caches/database-viewer-updater",
+    "~/Library/Caches/moledb-updater",
     "~/Library/Logs/Database Viewer",
+    "~/Library/Logs/MoleDB",
     "~/Library/Preferences/com.databaseviewer.viewer.plist",
     "~/Library/Saved Application State/com.databaseviewer.viewer.savedState",
   ]
