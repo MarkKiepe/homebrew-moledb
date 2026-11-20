@@ -19,17 +19,27 @@ cask "moledb" do
   app "MoleDB.app"
 
   zap trash: [
-    "~/Library/Application Support/Database Viewer",
-    "~/Library/Application Support/MoleDB",
-    "~/Library/Application Support/database-viewer",
     "~/Library/Application Support/databae-viewer",
+    "~/Library/Application Support/Database Viewer",
+    "~/Library/Application Support/database-viewer",
+    "~/Library/Application Support/MoleDB",
+    "~/Library/Caches/com.databaseviewer.viewer",
+    "~/Library/Caches/com.databaseviewer.viewer.ShipIt",
+    "~/Library/Caches/com.moledb.app",
+    "~/Library/Caches/com.moledb.app.ShipIt",
     "~/Library/Caches/Database Viewer",
-    "~/Library/Caches/MoleDB",
     "~/Library/Caches/database-viewer-updater",
+    "~/Library/Caches/MoleDB",
     "~/Library/Caches/moledb-updater",
+    "~/Library/HTTPStorages/com.databaseviewer.viewer",
+    "~/Library/HTTPStorages/com.databaseviewer.viewer.binarycookies",
+    "~/Library/HTTPStorages/com.moledb.app",
+    "~/Library/HTTPStorages/com.moledb.app.binarycookies",
     "~/Library/Logs/Database Viewer",
     "~/Library/Logs/MoleDB",
     "~/Library/Preferences/com.databaseviewer.viewer.plist",
+    "~/Library/Preferences/com.moledb.app.plist",
     "~/Library/Saved Application State/com.databaseviewer.viewer.savedState",
+    "~/Library/Saved Application State/com.moledb.app.savedState",
   ]
 end
